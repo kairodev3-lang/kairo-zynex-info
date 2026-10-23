@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080812">
+<meta name="description" content="KAIRO ZYNEX INFO — guide moderne des commandes, outils et communautés KAIRO DEV.">
+<meta name="color-scheme" content="dark">
+<title>KAIRO ZYNEX INFO — KAIRO DEV</title>
+<style>
+:root{--bg:#080812;--panel:#111120;--line:#292541;--purple:#a78bfa;--blue:#60a5fa;--muted:#aaa8c2;--text:#f7f5ff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -15%,#33205d 0,transparent 48%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;background:#080812ed;backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px}.brand{font-weight:950;letter-spacing:1px;font-size:18px;white-space:nowrap}.brand span{color:var(--purple)}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}
+#language{max-width:175px;padding:10px;color:white;background:#171329;border:1px solid #7251a8;border-radius:10px}
+.nav-bot,.primary{display:inline-block;background:linear-gradient(100deg,#8b5cf6,#3b82f6);color:white;border:0;border-radius:10px;padding:11px 15px;font-weight:800}
+main{max-width:1180px;margin:auto;padding:28px 20px 65px}.hero{text-align:center;padding:64px 0 42px}.tag{display:inline-block;border:1px solid #7251a8;border-radius:99px;padding:7px 13px;color:#d8c7ff;font-size:11px;letter-spacing:1.6px}
+h1{font-size:clamp(37px,7vw,68px);line-height:1.06;margin:22px 0 16px;letter-spacing:-2px}h1 span{background:linear-gradient(90deg,#c4b5fd,#60a5fa);background-clip:text;color:transparent}
+.hero p{max-width:700px;margin:auto;color:var(--muted);line-height:1.85}.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}.secondary{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:11px 15px;background:#ffffff08}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 38px}.stat,.panel,.command{border:1px solid var(--line);background:#111120e8;border-radius:15px}.stat{text-align:center;padding:19px 8px}.stat strong{display:block;font-size:25px;color:var(--purple)}.stat small{color:var(--muted)}
+.section-title{font-size:25px;margin:28px 0 15px}.search{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;color:white;outline:none}.search:focus{border-color:var(--purple)}
+.filters{display:flex;gap:8px;overflow-x:auto;padding:14px 0}.filter{white-space:nowrap;background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:9px;padding:9px 12px}.filter.active{background:#35245c;color:white;border-color:var(--purple)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;align-items:start}.panel{padding:16px}.panel h3{margin:2px 0 13px}.side-list{display:grid;gap:5px}.side-list button{text-align:left;background:transparent;color:var(--muted);border:0;border-radius:8px;padding:10px}.side-list button.active,.side-list button:hover{background:#28203e;color:white}
+.results-head{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;color:var(--muted);font-size:13px}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.command{padding:17px;min-width:0;transition:.2s}.command:hover{border-color:#8064ca;transform:translateY(-2px)}.cmd{color:#c4b5fd;font-weight:850;font-size:17px;overflow-wrap:anywhere}.category{font-size:11px;color:#93c5fd;text-transform:uppercase;letter-spacing:1px;margin:10px 0}.command p{font-size:13px;line-height:1.75;color:var(--muted);margin:0 0 15px}.details{background:transparent;border:0;color:#c4b5fd;font-weight:800;padding:0}
+.community{margin:35px 0;padding:23px}.community p,.about p{color:var(--muted);line-height:1.8}.social-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}.social-link{display:block;padding:17px 10px;text-align:center;border:1px solid #393052;border-radius:12px;background:#151326;transition:.2s}.social-link:hover{border-color:#a78bfa;transform:translateY(-2px)}.social-link strong{display:block;margin-bottom:7px;color:#c4b5fd}.social-link span{color:#aaa6c3;font-size:12px}
+.empty{padding:35px;text-align:center;color:var(--muted);grid-column:1/-1}footer{border-top:1px solid var(--line);text-align:center;padding:28px 18px;color:var(--muted);font-size:13px;line-height:2}footer strong{color:var(--purple)}
+.modal{position:fixed;inset:0;background:#000c;z-index:10;display:none;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}.modal-box{max-width:650px;width:100%;max-height:86vh;overflow:auto;background:#111120;border:1px solid #49406b;border-radius:17px;padding:23px}.modal-top{display:flex;justify-content:space-between;gap:15px;align-items:center}.close{background:#28203e;color:white;border:0;border-radius:8px;padding:9px 12px}.modal-box p,.modal-box li{color:#c2bfd7;line-height:1.8}.example{padding:13px;background:#080812;border:1px solid var(--line);border-radius:9px;color:#c4b5fd;overflow-wrap:anywhere}
+[dir=rtl] body{text-align:right}[dir=rtl] .side-list button{text-align:right}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.sidebar{display:none}.cards{grid-template-columns:1fr}.hero{padding-top:42px}main{padding-left:14px;padding-right:14px}.stats{gap:7px}.stat strong{font-size:21px}.brand{font-size:15px}.nav{flex-wrap:wrap}.nav-actions{width:100%;justify-content:space-between}.social-links{grid-template-columns:1fr}}
+
+/* === CLEAN KAIRO THEME: SIMPLE, FLAT, LIGHT/DARK === */
+:root{
+ --bg:#f5f6fa;--panel:#ffffff;--line:#e2e5ed;--purple:#5b5bd6;
+ --blue:#3478d4;--muted:#656b7b;--text:#202437;--accent-soft:#eeedff;
+ --header:rgba(255,255,255,.94);--card-shadow:none;--hover:#f0efff;
+ color-scheme:light
+}
+html[data-theme="dark"]{
+ --bg:#101116;--panel:#191a22;--line:#30323e;--purple:#b8a8ff;
+ --blue:#8ab9ff;--muted:#a9adbb;--text:#f1f2f7;--accent-soft:#29263c;
+ --header:rgba(16,17,22,.94);--card-shadow:none;--hover:#242431;
+ color-scheme:dark
+}
+*{box-shadow:none!important;text-shadow:none!important}
+body{
+ background:var(--bg);color:var(--text);transition:background .2s,color .2s;
+ background-attachment:initial
+}
+body:before{display:none}
+header{background:var(--header);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+.nav{min-height:68px}
+.brand{font-size:17px;letter-spacing:.8px}
+.brand span{color:var(--purple)}
+.nav-actions{gap:8px}
+#language,#themeToggle{
+ padding:10px 12px;border:1px solid var(--line);border-radius:9px;
+ color:var(--text);background:var(--panel);cursor:pointer
+}
+#language:focus,#themeToggle:focus{outline:2px solid var(--purple);outline-offset:2px}
+#themeToggle{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.nav-bot,.primary{
+ background:var(--purple);color:#fff;border:1px solid var(--purple);
+ border-radius:9px;padding:10px 14px;font-weight:750;transition:background .15s,border-color .15s
+}
+.nav-bot:hover,.primary:hover{background:var(--blue);border-color:var(--blue);transform:none;filter:none}
+main{padding-top:16px}
+.hero{padding:58px 0 36px}
+.hero:before{display:none}
+.tag{background:var(--accent-soft);border:1px solid var(--line);color:var(--purple);letter-spacing:1px}
+h1{letter-spacing:-1.8px}
+h1 span{background:none;color:var(--purple)}
+.hero p{font-size:15px;color:var(--muted)}
+.secondary{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:9px;padding:10px 14px;transition:background .15s,border-color .15s}
+.secondary:hover{background:var(--hover);border-color:var(--purple);transform:none}
+.stats{gap:12px;margin:18px 0 38px}
+.stat,.panel,.command{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:none!important}
+.stat{padding:17px 9px}
+.stat:after{display:none}
+.stat:hover{transform:none;border-color:var(--line)}
+.stat strong{background:none;color:var(--purple)}
+.stat small{color:var(--muted)}
+.section-title{letter-spacing:-.5px}
+.search{background:var(--panel);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:14px;box-shadow:none}
+.search:focus{border-color:var(--purple);box-shadow:none}
+.filters{gap:7px;padding:12px 0;scrollbar-width:thin}
+.filter{background:var(--panel);border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:9px 11px;transition:background .15s,border-color .15s,color .15s}
+.filter:hover{border-color:var(--purple);color:var(--text)}
+.filter.active{background:var(--accent-soft);color:var(--purple);border-color:var(--purple)}
+.layout{gap:15px}
+.panel{padding:15px}
+.side-list button{color:var(--muted);border-radius:7px;transition:background .15s,color .15s}
+.side-list button.active,.side-list button:hover{background:var(--hover);color:var(--text);box-shadow:none}
+.side-list button.active{border-left:2px solid var(--purple)}
+.command{padding:16px;transition:border-color .15s,background .15s}
+.command:before{display:none}
+.command:hover{border-color:var(--purple);background:var(--hover);transform:none;box-shadow:none}
+.cmd{color:var(--purple);font-size:17px}
+.category{display:inline-block;border:1px solid var(--line);background:var(--accent-soft);border-radius:6px;padding:4px 7px;margin:9px 0;color:var(--purple);font-size:10px}
+.command p{color:var(--muted);line-height:1.7}
+.details{color:var(--purple);padding:5px 0;font-weight:750}
+.details:hover{color:var(--blue)}
+.community{margin:32px 0;padding:21px}
+.community:after{display:none}
+.community p,.about p{color:var(--muted);line-height:1.8}
+.social-links{gap:10px}
+.social-link{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:16px 10px;transition:background .15s,border-color .15s}
+.social-link:hover{border-color:var(--purple);background:var(--hover);transform:none;box-shadow:none}
+.social-link strong{color:var(--purple)}
+.social-link span{color:var(--muted)}
+.about .primary{margin-top:3px}
+footer{background:transparent;border-top:1px solid var(--line);color:var(--muted)}
+footer b{color:var(--purple);letter-spacing:.5px}
+.modal{backdrop-filter:blur(5px)}
+.modal-box{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:none}
+.modal-box p,.modal-box li{color:var(--muted)}
+.close{background:var(--accent-soft);color:var(--text);border:1px solid var(--line);border-radius:8px}
+.close:hover{background:var(--hover)}
+.example{background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--purple)}
+.empty{color:var(--muted)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--purple);outline-offset:2px}
+::selection{background:var(--purple);color:#fff}
+@media(max-width:760px){
+ .hero{padding:42px 0 28px}
+ h1{letter-spacing:-1px}
+ .stats{gap:8px;margin-bottom:30px}
+ .command p{min-height:0}
+ .nav{padding:11px 13px}
+ .nav-actions{justify-content:space-between}
+ #language{flex:1;min-width:0}
+ #themeToggle{padding:10px}
+ .nav-bot{padding:10px 11px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+</style>
+</head>
+<body>
+<header><div class="nav">
+<a class="brand" href="#">KAIRO <span>ZYNEX</span> INFO</a>
+<div class="nav-actions">
+<select id="language" aria-label="Choisir la langue">
+<option value="fr">🇫🇷 Français</option><option value="en">🇬🇧 English</option><option value="ht">🇭🇹 Kreyòl</option><option value="ur">🇵🇰 اردو (Pakistan)</option>
+</select>
+<button id="themeToggle" type="button" aria-label="Changer le thème"><span id="themeIcon">☀</span><span id="themeLabel">Clair</span></button>
+<a class="nav-bot" href="https://zynex-pair-code.up.railway.app" target="_blank" rel="noopener noreferrer" data-i18n="openBot">Ouvrir le bot ↗</a>
+</div></div></header>
+<main>
+<section class="hero">
+<span class="tag">COMMAND GUIDE · VERSION 1.0.0</span>
+<h1 data-i18n="heroTitle">Découvrez <span>KAIRO ZYNEX</span></h1>
+<p data-i18n="heroDesc">Le guide pour comprendre les commandes, découvrir leurs utilités et apprendre à les utiliser. Explorez les outils, la gestion de groupe, les médias, les téléchargements et l'intelligence artificielle.</p>
+<div class="actions"><a class="primary" href="#commandes" data-i18n="explore">Explorer les commandes ↓</a><a class="secondary" href="https://zynex-pair-code.up.railway.app" target="_blank" rel="noopener noreferrer" data-i18n="connect">Connexion au bot ↗</a></div>
+</section>
+<div class="stats"><div class="stat"><strong id="total">77</strong><small data-i18n="commandsAnnounced">Commandes annoncées</small></div><div class="stat"><strong>9</strong><small data-i18n="categories">Catégories</small></div><div class="stat"><strong>1.0.0</strong><small data-i18n="version">Version affichée</small></div></div>
+
+<section class="panel community" id="community">
+<h2 data-i18n="communityTitle">🌐 Rejoignez notre communauté</h2>
+<p data-i18n="communityDesc">Retrouvez KAIRO ZYNEX sur Telegram et WhatsApp pour suivre les actualités, les nouveautés et les informations du projet.</p>
+<div class="social-links">
+<a class="social-link" href="https://t.me/+DNDuiVM_Wv81Yzhh" target="_blank" rel="noopener noreferrer"><strong>✈️ Group Telegram</strong><span data-i18n="joinGroup">Rejoindre le groupe</span></a>
+<a class="social-link" href="https://t.me/kairoXuniverse" target="_blank" rel="noopener noreferrer"><strong>🚀 Channel Telegram</strong><span data-i18n="followChannel">Suivre le channel</span></a>
+<a class="social-link" href="https://whatsapp.com/channel/0029VbDmi1g77qVOA4cfRq13" target="_blank" rel="noopener noreferrer"><strong>💚 Channel WhatsApp</strong><span data-i18n="subscribe">Suivre le channel</span></a>
+</div></section>
+
+<section id="commandes">
+<h2 class="section-title" data-i18n="library">Bibliothèque des commandes</h2>
+<input id="search" class="search" placeholder="⌕ Rechercher une commande ou une fonction..." aria-label="Rechercher une commande">
+<div class="filters" id="filters"></div>
+<div class="layout"><aside class="panel sidebar"><h3 data-i18n="categories">Catégories</h3><div class="side-list" id="sidebar"></div><hr style="border-color:var(--line);margin:20px 0"><p style="color:var(--muted);font-size:13px;line-height:1.8">Préfixe : <b style="color:white">.</b><br>Owner : <b style="color:white">KAIRO DEV</b><br>Mode : <b style="color:white">Private</b></p></aside>
+<div><div class="results-head"><span id="count">Commandes</span><span data-i18n="guideLang">Guide multilingue</span></div><div class="cards" id="cards"></div></div></div>
+</section>
+<section class="panel about" style="margin-top:35px;padding:23px"><h2 data-i18n="tryBot">🚀 Essayez KAIRO ZYNEX</h2><p data-i18n="tryDesc">Accédez au site d'appairage du bot. Vérifiez que vous faites confiance au service avant de connecter votre compte WhatsApp. Ne partagez jamais vos codes de vérification.</p><a class="primary" href="https://zynex-pair-code.up.railway.app" target="_blank" rel="noopener noreferrer" data-i18n="openPair">Ouvrir le site d'appairage ↗</a></section>
+</main>
+<footer><strong>KAIRO ZYNEX INFO</strong><br><span data-i18n="footer">Guide des commandes du bot WhatsApp</span><br><b>⟪ POWERED BY KAIRO 〆 DEV ⟫</b><br><span data-i18n="disclaimer">Les fonctions exactes dépendent du code du bot, des API et des autorisations disponibles.</span></footer>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-box"><div class="modal-top"><div><div class="category" id="modalCategory"></div><h2 id="modalTitle"></h2></div><button class="close" id="close" data-i18n="close">Fermer ✕</button></div><p id="modalDesc"></p><h3 data-i18n="whatFor">À quoi sert cette commande ?</h3><p id="modalUse"></p><h3 data-i18n="example">Exemple d'utilisation</h3><div class="example" id="modalExample"></div><h3 data-i18n="important">Informations importantes</h3><p id="modalNote"></p></div></div>
+<script>
+const categories={"Menu":"🧸","Outils":"🛠️","Configuration":"⚙️","Groupes":"👥","Médias":"🎥","Recherche & IA":"🔍","Téléchargements":"📥","Nouvelles commandes":"🆕","Mentions & réponses":"🏷️"};
+const raw=[
+["Menu","menu","Affiche le menu des commandes.","Consulter rapidement les fonctions disponibles.",".menu"],
+["Menu","alive","Vérifie si le bot répond et semble actif.","Contrôler la disponibilité du bot.",".alive"],
+["Menu","runtime","Affiche la durée de fonctionnement du bot.","Consulter depuis combien de temps le processus fonctionne.",".runtime"],
+["Outils","ping","Teste la réactivité du bot et affiche généralement le temps de réponse.","Repérer une réponse lente ou une connexion instable.",".ping"],
+["Outils","getid","Récupère l'identifiant de l'élément ciblé, selon le contexte.","Identifier un utilisateur, un groupe ou un message pris en charge.",".getid"],
+["Outils","sudo","Ajoute un utilisateur à la liste des utilisateurs privilégiés.","Donner des permissions spéciales à une personne de confiance.",".sudo @utilisateur"],
+["Outils","tourl","Transforme un média pris en charge en lien URL.","Partager un fichier au moyen d'une URL lorsque le service le permet.",".tourl (répondre à un média)"],
+["Outils","owner","Affiche les informations de contact du propriétaire configurées dans le bot.","Savoir à qui s'adresser pour les questions ou les problèmes.",".owner"],
+["Outils","fancy","Transforme un texte en caractères et styles décoratifs.","Créer un nom ou un texte stylisé.",".fancy KAIRO ZYNEX"],
+["Outils","update","Vérifie ou lance une mise à jour si cette fonction est implémentée.","Maintenir le bot à jour, selon le code installé.",".update"],
+["Outils","device","Affiche certaines informations relatives à l'appareil ou à la session.","Aider au diagnostic, selon les données accessibles.",".device"],
+["Outils","delsudo","Retire un utilisateur de la liste des utilisateurs privilégiés.","Révoquer des permissions spéciales.",".delsudo @utilisateur"],
+["Outils","getsudo","Affiche la liste des utilisateurs privilégiés.","Vérifier qui possède les permissions sudo.",".getsudo"],
+["Configuration","online","Configure ou affiche le statut de présence en ligne.","Gérer le comportement de présence pris en charge.",".online"],
+["Configuration","welcome","Configure les messages de bienvenue des nouveaux membres.","Accueillir automatiquement les nouveaux arrivants.",".welcome"],
+["Configuration","autotype","Configure l'indicateur automatique de saisie.","Afficher ou arrêter l'indicateur de saisie si disponible.",".autotype"],
+["Configuration","autoreact","Configure les réactions automatiques aux messages.","Automatiser certaines réactions selon les options du bot.",".autoreact"],
+["Configuration","setprefix","Change le préfixe utilisé avant les commandes.","Personnaliser le symbole qui déclenche les commandes.",".setprefix !"],
+["Configuration","getconfig","Affiche la configuration actuelle du bot.","Consulter les options actuellement enregistrées.",".getconfig"],
+["Configuration","statuslike","Configure les réactions sur les statuts.","Adapter le comportement du bot lors de la consultation des statuts.",".statuslike"],
+["Configuration","autorecord","Configure l'indicateur d'enregistrement audio automatique.","Gérer cet indicateur lorsque la fonction est prise en charge.",".autorecord"],
+["Configuration","autolike","Configure les réactions automatiques prises en charge.","Automatiser certaines réactions selon la configuration.",".autolike"],
+["Configuration","autoview","Configure la consultation automatique des statuts.","Gérer la consultation automatique selon le code du bot.",".autoview"],
+["Configuration","likeemoji","Choisit l'émoji des réactions automatiques.","Personnaliser l'émoji utilisé pour réagir.",".likeemoji ❤️"],
+["Configuration","private","Passe le bot en mode privé si cette option existe.","Limiter certaines commandes aux utilisateurs autorisés.",".private"],
+["Configuration","public","Passe le bot en mode public si cette option existe.","Permettre un accès plus large selon les règles du bot.",".public"],
+["Groupes","bye","Fait quitter au bot le groupe concerné.","Retirer volontairement le bot d'un groupe.",".bye"],
+["Groupes","kick","Demande l'expulsion d'un membre du groupe.","Modérer un groupe avec les autorisations nécessaires.",".kick @utilisateur"],
+["Groupes","add","Tente d'ajouter un membre au groupe.","Ajouter un membre lorsque WhatsApp et le groupe l'autorisent.",".add 509XXXXXXXX"],
+["Groupes","purge","Nettoie ou supprime des messages ciblés, selon le code.","Gérer les messages indésirables. Vérifier la portée avant usage.",".purge"],
+["Groupes","mute","Ferme temporairement le groupe aux messages des membres si pris en charge.","Limiter les messages pendant une annonce.",".mute"],
+["Groupes","unmute","Rétablit l'envoi de messages après une restriction.","Rendre la discussion accessible aux membres.",".unmute"],
+["Groupes","promote","Nomme un membre administrateur du groupe.","Confier des responsabilités à un membre de confiance.",".promote @utilisateur"],
+["Groupes","demote","Retire les droits d'administrateur d'un membre.","Ajuster les rôles de gestion du groupe.",".demote @utilisateur"],
+["Groupes","gclink","Affiche ou récupère le lien d'invitation du groupe.","Partager le lien avec des personnes autorisées.",".gclink"],
+["Groupes","antilink","Configure la protection contre les liens interdits.","Limiter les liens indésirables dans un groupe.",".antilink"],
+["Groupes","kickall","Tente une expulsion massive si cette fonction existe.","Commande à haut risque pouvant perturber le groupe.",".kickall"],
+["Groupes","promoteall","Tente de promouvoir plusieurs membres.","Accorde des privilèges importants : à utiliser avec prudence.",".promoteall"],
+["Groupes","demoteall","Tente de retirer les privilèges à plusieurs administrateurs.","Peut affecter la gestion du groupe : vérifier les cibles.",".demoteall"],
+["Groupes","groupstatus","Affiche des informations sur l'état du groupe.","Consulter les données disponibles du groupe.",".groupstatus"],
+["Groupes","creategc","Tente de créer un groupe si la fonction est prise en charge.","Faciliter la création d'un nouveau groupe.",".creategc"],
+["Médias","vv","Tente de récupérer ou renvoyer un média à affichage unique si pris en charge.","Fonction dépendante du code et de l'accès légitime au média.",".vv (répondre au média)"],
+["Médias","take","Modifie généralement le nom ou les informations d'un autocollant.","Personnaliser un sticker.",".take KAIRO"],
+["Médias","save","Enregistre ou récupère un média pris en charge.","Conserver un fichier auquel on a accès.",".save (répondre au média)"],
+["Médias","photo","Récupère ou traite une photo selon les fonctions installées.","Accéder au traitement d'image disponible.",".photo"],
+["Médias","setpp","Définit la photo de profil du bot ou du groupe selon le contexte.","Personnaliser une photo de profil avec les droits nécessaires.",".setpp (répondre à une image)"],
+["Médias","grtpp","Semble récupérer une photo de profil ; la fonction exacte reste à confirmer.","Consulter une photo de profil si la commande l'autorise.",".grtpp"],
+["Médias","toaudio","Convertit un média vidéo compatible en fichier audio.","Extraire le son d'une vidéo prise en charge.",".toaudio (répondre à une vidéo)"],
+["Médias","sticker","Transforme une image ou vidéo compatible en autocollant.","Créer des stickers à partager.",".sticker (répondre à une image)"],
+["Médias","logo","Génère ou prépare un logo selon les fonctions disponibles.","Créer un visuel si le service est configuré.",".logo KAIRO DEV"],
+["Médias","aigen","Demande la génération d'une image par IA si le service est connecté.","Créer une illustration à partir d'une description.",".aigen un logo futuriste bleu"],
+["Médias","telegram","Traite un lien ou média Telegram pris en charge.","Importer un média si la fonction existe.",".telegram (lien compatible)"],
+["Médias","toimage","Convertit un média compatible en image.","Obtenir une image à partir d'un format pris en charge.",".toimage (répondre au média)"],
+["Recherche & IA","kairo zynex <question>","Envoie une question au système d'IA configuré dans le bot.","Obtenir une explication si le service d'IA fonctionne.",".kairo zynex Quelle est la capitale d'Haïti ?"],
+["Recherche & IA","wiki-en <topic>","Recherche un sujet en anglais sur Wikipédia si connecté.","Obtenir des informations encyclopédiques en anglais.",".wiki-en Artificial intelligence"],
+["Recherche & IA","wiki-fr <topic>","Recherche un sujet en français sur Wikipédia si connecté.","Consulter des informations encyclopédiques en français.",".wiki-fr Haïti"],
+["Téléchargements","img","Recherche ou télécharge des images via un service compatible.","Trouver un visuel disponible.",".img paysage spatial"],
+["Téléchargements","play","Recherche généralement une musique ou vidéo par son titre.","Lancer une recherche média.",".play nom de chanson"],
+["Téléchargements","tiktok","Traite ou télécharge une vidéo TikTok compatible.","Récupérer un média accessible dans le respect des règles de la plateforme.",".tiktok (lien vidéo)"],
+["Téléchargements","ig","Traite un lien ou média Instagram compatible.","Accéder à un média pris en charge.",".ig (lien Instagram)"],
+["Téléchargements","apk","Recherche ou télécharge un fichier APK selon le service connecté.","Vérifier la provenance et la sécurité du fichier avant installation.",".apk nom de l'application"],
+["Téléchargements","song","Recherche ou télécharge une chanson via une source compatible.","Retrouver un titre musical.",".song nom de chanson"],
+["Téléchargements","video","Télécharge une vidéo depuis une source compatible.","Récupérer un média autorisé et disponible.",".video (lien vidéo)"],
+["Téléchargements","fb","Traite ou télécharge du contenu Facebook pris en charge.","Récupérer un média accessible selon les limites du service.",".fb (lien Facebook)"],
+["Nouvelles commandes","jid","Affiche l'identifiant JID d'un utilisateur ou groupe ciblé.","Aider à identifier techniquement une conversation.",".jid"],
+["Nouvelles commandes","groupinfo","Affiche les informations disponibles sur le groupe.","Consulter les données générales du groupe.",".groupinfo"],
+["Nouvelles commandes","admins","Affiche la liste des administrateurs du groupe.","Identifier les responsables de gestion.",".admins"],
+["Nouvelles commandes","members","Affiche les membres du groupe si la fonction le permet.","Consulter la liste des participants accessibles.",".members"],
+["Nouvelles commandes","botinfo","Affiche les informations générales du bot.","Consulter son nom, sa version ou ses informations configurées.",".botinfo"],
+["Nouvelles commandes","calc","Effectue un calcul mathématique.","Obtenir le résultat d'une opération prise en charge.",".calc 25*4"],
+["Nouvelles commandes","quote","Génère ou affiche une citation.","Trouver une phrase inspirante.",".quote"],
+["Nouvelles commandes","help","Affiche de l'aide sur les commandes.","Comprendre comment utiliser les fonctions disponibles.",".help"],
+["Mentions & réponses","tag","Mentionne un utilisateur ou une cible sélectionnée.","Attirer l'attention d'un membre précis.",".tag @utilisateur"],
+["Mentions & réponses","tagadmin","Mentionne les administrateurs du groupe.","Avertir les responsables du groupe.",".tagadmin"],
+["Mentions & réponses","tagall","Mentionne les membres du groupe ou les membres ciblés.","Faire une annonce collective sans abus.",".tagall"],
+["Mentions & réponses","settag","Configure un texte ou modèle de mention.","Personnaliser le message utilisé pour les mentions.",".settag Votre annonce"],
+["Mentions & réponses","response","Configure ou gère les réponses automatiques si disponible.","Répondre automatiquement à certains messages selon des règles.",".response"]
+];
+const commands=raw.map(([cat,name,desc,use,example])=>({cat,name,desc,use,example}));
+const i18n={
+fr:{themeLight:"Clair",themeDark:"Sombre",openBot:"Ouvrir le bot ↗",heroTitle:'Découvrez <span>KAIRO ZYNEX</span>',heroDesc:"Le guide pour comprendre les commandes, découvrir leurs utilités et apprendre à les utiliser. Explorez les outils, la gestion de groupe, les médias, les téléchargements et l'intelligence artificielle.",explore:"Explorer les commandes ↓",connect:"Connexion au bot ↗",commandsAnnounced:"Commandes annoncées",categories:"Catégories",version:"Version affichée",communityTitle:"🌐 Rejoignez notre communauté",communityDesc:"Retrouvez KAIRO ZYNEX sur Telegram et WhatsApp pour suivre les actualités, les nouveautés et les informations du projet.",joinGroup:"Rejoindre le groupe",followChannel:"Suivre le channel",subscribe:"Suivre le channel",library:"Bibliothèque des commandes",placeholder:"⌕ Rechercher une commande ou une fonction...",all:"Toutes",guideLang:"Guide des commandes",tryBot:"🚀 Essayez KAIRO ZYNEX",tryDesc:"Accédez au site d'appairage du bot. Vérifiez que vous faites confiance au service avant de connecter votre compte WhatsApp. Ne partagez jamais vos codes de vérification.",openPair:"Ouvrir le site d'appairage ↗",footer:"Guide des commandes du bot WhatsApp",disclaimer:"Les fonctions exactes dépendent du code du bot, des API et des autorisations disponibles.",close:"Fermer ✕",whatFor:"À quoi sert cette commande ?",example:"Exemple d'utilisation",important:"Informations importantes",details:"Voir les détails →",found:"commande(s) trouvée(s)",none:"Aucune commande trouvée. Essayez un autre mot-clé.",categoriesMap:{"Menu":"Menu","Outils":"Outils","Configuration":"Configuration","Groupes":"Groupes","Médias":"Médias","Recherche & IA":"Recherche & IA","Téléchargements":"Téléchargements","Nouvelles commandes":"Nouvelles commandes","Mentions & réponses":"Mentions & réponses"}},
+en:{themeLight:"Light",themeDark:"Dark",openBot:"Open bot ↗",heroTitle:'Discover <span>KAIRO ZYNEX</span>',heroDesc:"The guide to understanding commands and learning how to use them. Explore tools, group management, media, downloads and artificial intelligence.",explore:"Explore commands ↓",connect:"Connect to bot ↗",commandsAnnounced:"Listed commands",categories:"Categories",version:"Displayed version",communityTitle:"🌐 Join our community",communityDesc:"Follow KAIRO ZYNEX on Telegram and WhatsApp for project news, updates and announcements.",joinGroup:"Join the group",followChannel:"Follow the channel",subscribe:"Follow the channel",library:"Command library",placeholder:"⌕ Search for a command or feature...",all:"All",guideLang:"Command guide",tryBot:"🚀 Try KAIRO ZYNEX",tryDesc:"Open the bot pairing website. Make sure you trust the service before connecting your WhatsApp account. Never share your verification codes.",openPair:"Open pairing website ↗",footer:"WhatsApp bot command guide",disclaimer:"Exact features depend on the bot code, APIs and available permissions.",close:"Close ✕",whatFor:"What is this command for?",example:"Usage example",important:"Important information",details:"View details →",found:"command(s) found",none:"No commands found. Try another keyword.",categoriesMap:{"Menu":"Menu","Outils":"Tools","Configuration":"Settings","Groupes":"Groups","Médias":"Media","Recherche & IA":"Search & AI","Téléchargements":"Downloads","Nouvelles commandes":"New commands","Mentions & réponses":"Tags & auto-replies"}},
+ht:{themeLight:"Blan",themeDark:"Nwa",openBot:"Louvri bot la ↗",heroTitle:'Dekouvri <span>KAIRO ZYNEX</span>',heroDesc:"Gid pou konprann kòmand yo ak fason pou itilize yo. Dekouvri zouti, jesyon gwoup, medya, telechajman ak entèlijans atifisyèl.",explore:"Dekouvri kòmand yo ↓",connect:"Konekte ak bot la ↗",commandsAnnounced:"Kòmand ki anonse",categories:"Kategori",version:"Vèsyon ki parèt",communityTitle:"🌐 Vin jwenn kominote nou an",communityDesc:"Swiv KAIRO ZYNEX sou Telegram ak WhatsApp pou jwenn nouvèl, mizajou ak enfòmasyon sou pwojè a.",joinGroup:"Antre nan gwoup la",followChannel:"Swiv channel la",subscribe:"Swiv channel la",library:"Lis kòmand yo",placeholder:"⌕ Chèche yon kòmand oswa yon fonksyon...",all:"Tout",guideLang:"Gid kòmand yo",tryBot:"🚀 Eseye KAIRO ZYNEX",tryDesc:"Ale sou sit appairage bot la. Asire w ou fè sèvis la konfyans anvan ou konekte WhatsApp ou. Pa janm pataje kòd verifikasyon ou.",openPair:"Louvri sit appairage la ↗",footer:"Gid kòmand bot WhatsApp la",disclaimer:"Fonksyon egzak yo depann de kòd bot la, API yo ak otorizasyon ki disponib.",close:"Fèmen ✕",whatFor:"Pou kisa kòmand sa a sèvi?",example:"Egzanp itilizasyon",important:"Enfòmasyon enpòtan",details:"Gade detay yo →",found:"kòmand jwenn",none:"Pa gen kòmand ki jwenn. Eseye yon lòt mo.",categoriesMap:{"Menu":"Meni","Outils":"Zouti","Configuration":"Konfigirasyon","Groupes":"Gwoup","Médias":"Medya","Recherche & IA":"Rechèch ak IA","Téléchargements":"Telechajman","Nouvelles commandes":"Nouvo kòmand","Mentions & réponses":"Mansyon ak repons otomatik"}},
+ur:{themeLight:"روشن",themeDark:"ڈارک",openBot:"بوٹ کھولیں ↗",heroTitle:'دریافت کریں <span>KAIRO ZYNEX</span>',heroDesc:"کمانڈز کو سمجھنے اور استعمال کرنے کے لیے رہنما۔ ٹولز، گروپ مینجمنٹ، میڈیا، ڈاؤن لوڈز اور مصنوعی ذہانت دریافت کریں۔",explore:"کمانڈز دیکھیں ↓",connect:"بوٹ سے رابطہ کریں ↗",commandsAnnounced:"درج شدہ کمانڈز",categories:"اقسام",version:"نمایاں ورژن",communityTitle:"🌐 ہماری کمیونٹی میں شامل ہوں",communityDesc:"خبروں اور اپ ڈیٹس کے لیے KAIRO ZYNEX کو ٹیلیگرام اور واٹس ایپ پر فالو کریں۔",joinGroup:"گروپ میں شامل ہوں",followChannel:"چینل فالو کریں",subscribe:"چینل فالو کریں",library:"کمانڈز کی فہرست",placeholder:"⌕ کمانڈ یا فیچر تلاش کریں...",all:"تمام",guideLang:"کمانڈ گائیڈ",tryBot:"🚀 KAIRO ZYNEX آزمائیں",tryDesc:"بوٹ کی پیئرنگ ویب سائٹ کھولیں۔ واٹس ایپ اکاؤنٹ منسلک کرنے سے پہلے سروس پر اعتماد کی تصدیق کریں۔ تصدیقی کوڈ کبھی شیئر نہ کریں۔",openPair:"پیئرنگ ویب سائٹ کھولیں ↗",footer:"واٹس ایپ بوٹ کمانڈ گائیڈ",disclaimer:"اصل خصوصیات بوٹ کے کوڈ، API اور دستیاب اجازتوں پر منحصر ہیں۔",close:"بند کریں ✕",whatFor:"یہ کمانڈ کس کام آتی ہے؟",example:"استعمال کی مثال",important:"اہم معلومات",details:"تفصیلات دیکھیں →",found:"کمانڈز ملیں",none:"کوئی کمانڈ نہیں ملی۔ دوسرا لفظ آزمائیں۔",categoriesMap:{"Menu":"مینو","Outils":"ٹولز","Configuration":"ترتیبات","Groupes":"گروپس","Médias":"میڈیا","Recherche & IA":"تلاش اور AI","Téléchargements":"ڈاؤن لوڈز","Nouvelles commandes":"نئی کمانڈز","Mentions & réponses":"ٹیگز اور خودکار جوابات"}}
+};
+let selected="Toutes",lang="fr",opened=null;
+const $=id=>document.getElementById(id), filters=$("filters"),sidebar=$("sidebar"),cards=$("cards"),search=$("search"),modal=$("modal");
+function tr(key){return i18n[lang][key]||i18n.fr[key]||key}
+function catName(cat){return i18n[lang].categoriesMap[cat]||cat}
+function renderFilters(){filters.innerHTML="";["Toutes",...Object.keys(categories)].forEach(cat=>{let b=document.createElement("button");b.className="filter"+(selected===cat?" active":"");b.textContent=cat==="Toutes"?"✦ "+tr("all"):categories[cat]+" "+catName(cat);b.onclick=()=>{selected=cat;render()};filters.appendChild(b)})}
+function renderSidebar(){sidebar.innerHTML="";["Toutes",...Object.keys(categories)].forEach(cat=>{let b=document.createElement("button");b.className=selected===cat?"active":"";b.textContent=(categories[cat]||"✦")+" "+(cat==="Toutes"?tr("all"):catName(cat));b.onclick=()=>{selected=cat;render()};sidebar.appendChild(b)})}
+function openDetails(c){opened=c;$("modalCategory").textContent=categories[c.cat]+" "+catName(c.cat);$("modalTitle").textContent="."+c.name;$("modalDesc").textContent=c.desc;$("modalUse").textContent=c.use;$("modalExample").textContent=c.example;$("modalNote").textContent=tr("disclaimer")+" Ne partagez jamais vos codes d'appairage ou de vérification.";modal.classList.add("show")}
+function renderCards(){let q=search.value.trim().toLowerCase();let list=commands.filter(c=>(selected==="Toutes"||c.cat===selected)&&[c.name,c.desc,c.use,c.cat].some(v=>v.toLowerCase().includes(q)));cards.innerHTML="";$("count").textContent=list.length+" "+tr("found");if(!list.length){let e=document.createElement("div");e.className="empty";e.textContent=tr("none");cards.appendChild(e);return}list.forEach(c=>{let a=document.createElement("article");a.className="command";let n=document.createElement("div");n.className="cmd";n.textContent="."+c.name;let cat=document.createElement("div");cat.className="category";cat.textContent=categories[c.cat]+" "+catName(c.cat);let p=document.createElement("p");p.textContent=c.desc;let b=document.createElement("button");b.className="details";b.textContent=tr("details");b.onclick=()=>openDetails(c);a.append(n,cat,p,b);cards.appendChild(a)})}
+function render(){renderFilters();renderSidebar();renderCards()}
+function applyLanguage(next){lang=next;document.documentElement.lang=next==="ht"?"ht":next==="ur"?"ur":next;document.documentElement.dir=next==="ur"?"rtl":"ltr";document.querySelectorAll("[data-i18n]").forEach(el=>{let key=el.dataset.i18n;if(key==="heroTitle")el.innerHTML=tr(key);else el.textContent=tr(key)});search.placeholder=tr("placeholder");render()}
+function setTheme(theme){
+ document.documentElement.dataset.theme=theme;
+ const dark=theme==="dark";
+ $("themeIcon").textContent=dark?"☾":"☀";
+ $("themeLabel").textContent=dark?tr("themeDark"):tr("themeLight");
+ $("themeToggle").setAttribute("aria-label",dark?tr("themeDark"):tr("themeLight"));
+}
+$("themeToggle").addEventListener("click",()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark"));
+$("language").addEventListener("change",e=>{applyLanguage(e.target.value);setTheme(document.documentElement.dataset.theme||"light")});search.addEventListener("input",renderCards);$("close").onclick=()=>modal.classList.remove("show");modal.addEventListener("click",e=>{if(e.target===modal)modal.classList.remove("show")});document.addEventListener("keydown",e=>{if(e.key==="Escape")modal.classList.remove("show")});$("total").textContent=commands.length;render();applyLanguage("fr");setTheme("light");
+</script>
+</body>
+</html>
